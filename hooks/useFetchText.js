@@ -6,5 +6,5 @@ export default function useFetchText(){
     if(data){
         return data.text
     }
-    return "Unable to fetch text."
+    return "No text available."
 }
