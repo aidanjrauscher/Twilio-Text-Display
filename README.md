@@ -2,6 +2,10 @@
 
 This is a simple webapp that displays texts sent to a Twilio number.
 
-Once a text is sent to the number, the app consumes the webhook and loads the latest text into the MongoDB collection. 
+1. A text is sent to the Twilio number
+2. Twilio's webhook hits the [storeText](storeText.js) API endpoint. 
+3. The text's information is added to MongoDB.
+4. Every sixty seconds (or on a defaul reload) a custom React hook with useSWR calls the [getText](getText.js) endpoint to fetch the newest text. 
+5. That text is displayed. 
 
-To display the most recent text, the React frontend calls the Next.js API, which reads from the database, every sixty seconds with useSWR to fetch the latest text.
+Built using Next.js, Tailwind CSS, Prisma, and MongoDB. 
