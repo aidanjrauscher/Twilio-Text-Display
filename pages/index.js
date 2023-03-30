@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import useFetchText from '../hooks/useFetchText'
+import {Radio} from "react-loader-spinner"
 
 
 
 export default function Home() {
 
-  const text = useFetchText()
+  const [isLoading, text, senderNumber]  = useFetchText()
 
   return (
     <>
@@ -16,7 +17,10 @@ export default function Home() {
       </Head>
       <main>
         <div className='grid h-screen place-items-center'>
-          <h1 className='text-black sm:text-2xl md:text-4xl lg:text-6xl'>{text}</h1>
+          {isLoading ? 
+            <Radio visible={true} height="150" width="150" ariaLabel="radio-loading"/> : 
+            <h1 className='text-black text-4xl lg:text-6xl'>{text}</h1> 
+          }
         </div>
       </main>
     </>
